@@ -1,20 +1,26 @@
-import {
-  Button,
-} from 'react-native';
 import React, { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import CurrencyInput from 'react-native-currency-input';
 import {
   Title, InputContainer, Input, Header,
-  Body, PercentContainer, Percent, Form,
-  Paragraph, Div,
+  Body, PercentContainer, PercentButton, Form,
+  Symbol, Div, Container, Footer, TextBox,
+  CalculateButton, PercentText, CalculateText,
+  ValueContainer, ValueText, TextBoxForm, SelectedPercentButton,
+  SelectedPercentText, Label,
 } from './Style';
 
 export default function Main() {
   const [requestValue, setRequestValue] = useState('');
   const [tipPercent, getTipPercent] = useState('');
+  const [customTipPercent, getcustomTipPercent] = useState('');
   const [peopleNumber, getPeopleNumber] = useState('');
   const [tipTotalValue, getTipTotalValue] = useState('');
   const [tipPerPeople, getTipPerPerson] = useState('');
+  const [fivePercent, getfivePercent] = useState(false);
+  const [tenPercent, getTenPercent] = useState(false);
+  const [fifteenPercent, getfifteenPercent] = useState(false);
+  const [Percent, gettwentyPercent] = useState(false);
 
   const tipSum = () => {
     const tipResult = (tipPercent / 100) * requestValue;
@@ -23,97 +29,203 @@ export default function Main() {
     getTipPerPerson(tipPerPersonCalc.toFixed(2).replace('.', ','));
   };
 
+  const customTipSum = () => {
+    const tipResult = (customTipPercent / 100) * requestValue;
+    getTipTotalValue(tipResult.toFixed(2).replace('.', ','));
+    const tipPerPersonCalc = tipResult / peopleNumber;
+    getTipPerPerson(tipPerPersonCalc.toFixed(2).replace('.', ','));
+  };
+
+  const getAllButtonFlase = () => {
+    getfivePercent(false);
+    getTenPercent(false);
+    getfifteenPercent(false);
+    gettwentyPercent(false);
+  };
+
+  const handlePress = (percentValue) => {
+    getTipPercent(percentValue);
+    getcustomTipPercent(null);
+    getAllButtonFlase();
+    switch (percentValue) {
+      case 5:
+        getfivePercent(true);
+        break;
+      case 10:
+        getTenPercent(true);
+        break;
+      case 15:
+        getfifteenPercent(true);
+        break;
+      case 20:
+        gettwentyPercent(true);
+        break;
+      default:
+        getfivePercent(false);
+    }
+  };
+
+  const calculatePress = () => {
+    if (customTipPercent > 0) {
+      return customTipSum();
+    }
+    return tipSum();
+  };
+
   return (
     <Body>
-      <Header>
-        <Title>Gorjetas</Title>
-      </Header>
-      <Form>
-        <Paragraph>Digite o valor total do pedido</Paragraph>
-        <InputContainer>
-          <Paragraph>R$</Paragraph>
-          <Input>
-            <CurrencyInput
-              placeholder="0,00"
-              value={requestValue}
-              onChangeValue={setRequestValue}
-              prefix=""
-              delimiter="."
-              separator=","
-              precision={2}
-              style={{
-                textAlign: 'right',
-                paddingRight: 5,
-              }}
-            />
-          </Input>
-        </InputContainer>
-        <Paragraph>Quanto quer dar de gorjeta?</Paragraph>
-        <PercentContainer>
-          <Percent
-            title="5%"
-            onPress={() => getTipPercent(5)}
-          />
-          <Percent
-            title="10%"
-            onPress={() => getTipPercent(10)}
-          />
+      <Container>
+        <Header>
+          <Title>Gorjetas</Title>
+        </Header>
+        <Form>
+          <TextBoxForm>
+            <Label>Digite o valor total do pedido</Label>
+          </TextBoxForm>
+          <InputContainer>
+            <Symbol>R$</Symbol>
+            <Input>
+              <CurrencyInput
+                placeholder="Digite o valor aqui"
+                value={requestValue}
+                onChangeValue={setRequestValue}
+                prefix=""
+                delimiter="."
+                separator=","
+                precision={2}
+                style={{
+                  textAlign: 'right',
+                }}
+              />
+            </Input>
+          </InputContainer>
+          <TextBoxForm>
+            <Label>Quanto quer dar de gorjeta?</Label>
+          </TextBoxForm>
+          <PercentContainer>
+            <Div>
 
-          <Percent
-            title="15%"
-            onPress={() => getTipPercent(15)}
-          />
+              { fivePercent ? (
+                <SelectedPercentButton
+                  onPress={() => handlePress(5)}
+                >
+                  <SelectedPercentText>5%</SelectedPercentText>
+                </SelectedPercentButton>
+              ) : (
+                <PercentButton
+                  onPress={() => handlePress(5)}
+                >
+                  <PercentText>5%</PercentText>
+                </PercentButton>
+              ) }
 
-          <Percent
-            title="20%"
-            onPress={() => getTipPercent(20)}
-          />
-          <CurrencyInput
-            maxValue={100}
-            placeholder="Personalize aqui"
-            value={tipPercent}
-            onChangeValue={getTipPercent}
-            prefix=""
-            separator=","
-            precision={2}
-            suffix=" %"
-            style={{
-              borderWidth: 1,
-              borderColor: '#44444',
-              TitleAlign: 'right',
-              paddingRight: 5,
-            }}
-          />
-        </PercentContainer>
+              { tenPercent ? (
+                <SelectedPercentButton
+                  onPress={() => handlePress(10)}
+                >
+                  <SelectedPercentText>10%</SelectedPercentText>
+                </SelectedPercentButton>
+              ) : (
+                <PercentButton
+                  onPress={() => handlePress(10)}
+                >
+                  <PercentText>10%</PercentText>
+                </PercentButton>
+              ) }
+            </Div>
 
-        <Paragraph>Quantas Pessoas irão pagar?</Paragraph>
-        <CurrencyInput
-          placeholder="Digite o valor"
-          value={peopleNumber}
-          onChangeValue={getPeopleNumber}
-          prefix=""
-          delimiter=""
-          separator=""
-          precision={0}
-          style={{
-            borderWidth: 1,
-            borderColor: '#44444',
-            textAlign: 'right',
-            paddingRight: 5,
-          }}
-        />
+            <Div>
+              { fifteenPercent ? (
+                <SelectedPercentButton
+                  onPress={() => handlePress(15)}
+                >
+                  <SelectedPercentText>15%</SelectedPercentText>
+                </SelectedPercentButton>
+              ) : (
+                <PercentButton
+                  onPress={() => handlePress(15)}
+                >
+                  <PercentText>15%</PercentText>
+                </PercentButton>
+              )}
 
-        <Button
-          title="Calcular"
-          onPress={tipSum}
-        />
-      </Form>
-      <Div>
-        <Paragraph>Valor total da gorjeta</Paragraph>
-        <Paragraph>{`R$ ${tipTotalValue}`}</Paragraph>
-        <Paragraph>Valor que cada pessoa ira pagar de gorjeta</Paragraph>
-        <Paragraph>{`R$ ${tipPerPeople}`}</Paragraph>
-      </Div>
+              { Percent ? (
+                <SelectedPercentButton
+                  onPress={() => handlePress(20)}
+                >
+                  <SelectedPercentText>20%</SelectedPercentText>
+                </SelectedPercentButton>
+              ) : (
+                <PercentButton
+                  onPress={() => handlePress(20)}
+                >
+                  <PercentText>20%</PercentText>
+                </PercentButton>
+              )}
+
+            </Div>
+            <InputContainer>
+              <Symbol>%</Symbol>
+              <Input>
+                <CurrencyInput
+                  maxValue={100}
+                  placeholder="Personalize aqui"
+                  value={customTipPercent}
+                  onChangeValue={getcustomTipPercent}
+                  onChange={getAllButtonFlase}
+                  prefix=""
+                  separator=","
+                  precision={0}
+                  suffix=""
+                  style={{ textAlign: 'right' }}
+                />
+              </Input>
+            </InputContainer>
+          </PercentContainer>
+          <TextBoxForm>
+            <Label>Quantas Pessoas irão pagar?</Label>
+          </TextBoxForm>
+          <InputContainer>
+            <Ionicons name="person-outline" size={16} color="#01A7C2" />
+            <Input>
+              <CurrencyInput
+                placeholder="Digite o valor"
+                value={peopleNumber}
+                onChangeValue={getPeopleNumber}
+                prefix=""
+                delimiter=""
+                separator=""
+                precision={0}
+                style={{ textAlign: 'right' }}
+              />
+            </Input>
+          </InputContainer>
+          <CalculateButton
+            onPress={calculatePress}
+          >
+            <CalculateText>Calcular</CalculateText>
+          </CalculateButton>
+        </Form>
+        <Footer>
+
+          <TextBox>
+            <Label>Valor total da gorjeta</Label>
+          </TextBox>
+          <ValueContainer>
+            <ValueText>R$</ValueText>
+            <ValueText>{tipTotalValue}</ValueText>
+          </ValueContainer>
+
+          <TextBox>
+            <Label>Valor que cada pessoa ira pagar de gorjeta</Label>
+          </TextBox>
+          <ValueContainer>
+            <ValueText>R$</ValueText>
+            <ValueText>{tipPerPeople}</ValueText>
+          </ValueContainer>
+
+        </Footer>
+      </Container>
     </Body>
   );
 }
