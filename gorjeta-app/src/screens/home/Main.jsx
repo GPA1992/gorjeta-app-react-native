@@ -14,17 +14,17 @@ import {
 export default function Main() {
   const [orderValue, setOrderValue] = useState('');
   const [tipPercent, setTipPercent] = useState('');
-  const [customTipPercent, setcustomTipPercent] = useState('');
+  const [customTipPercent, setCustomTipPercent] = useState('');
   const [peopleNumber, setPeopleNumber] = useState('');
   const [tipTotalValue, setTipTotalValue] = useState('');
   const [tipPerPeople, setTipPerPerson] = useState('');
-  const [fivePercent, setfivePercent] = useState(false);
+  const [fivePercent, setFivePercent] = useState(false);
   const [tenPercent, setTenPercent] = useState(false);
-  const [fifteenPercent, setfifteenPercent] = useState(false);
-  const [twentyPercent, settwentyPercent] = useState(false);
+  const [fifteenPercent, setFifteenPercent] = useState(false);
+  const [twentyPercent, setTwentyPercent] = useState(false);
   const [ifOrderIsValid, setIfOrderIsValid] = useState(true);
   const [ifPercentageIsValid, setIfPercentageIsValid] = useState(true);
-  const [ifNumberOfPeopleIsValid, setifNumberOfPeopleIsValid] = useState(true);
+  const [ifNumberOfPeopleIsValid, setIfNumberOfPeopleIsValid] = useState(true);
 
   const tipSum = () => {
     const tipResult = (tipPercent / 100) * orderValue;
@@ -35,28 +35,28 @@ export default function Main() {
   };
 
   const setAllButtonFalse = () => {
-    setfivePercent(false);
+    setFivePercent(false);
     setTenPercent(false);
-    setfifteenPercent(false);
-    settwentyPercent(false);
+    setFifteenPercent(false);
+    setTwentyPercent(false);
   };
 
   const percentPress = (percentValue) => {
     setTipPercent(percentValue);
-    setcustomTipPercent(null);
+    setCustomTipPercent(null);
     setAllButtonFalse();
     switch (percentValue) {
       case 5:
-        setfivePercent(true);
+        setFivePercent(true);
         break;
       case 10:
         setTenPercent(true);
         break;
       case 15:
-        setfifteenPercent(true);
+        setFifteenPercent(true);
         break;
       case 20:
-        settwentyPercent(true);
+        setTwentyPercent(true);
         break;
       default:
         setAllButtonFalse();
@@ -65,7 +65,7 @@ export default function Main() {
 
   const customPercentage = (percentValue) => {
     setTipPercent(percentValue);
-    setcustomTipPercent(percentValue);
+    setCustomTipPercent(percentValue);
   };
 
   const warning = () => {
@@ -80,16 +80,16 @@ export default function Main() {
       setIfPercentageIsValid(true);
     }
     if (peopleNumber === '' || peopleNumber === null) {
-      setifNumberOfPeopleIsValid(false);
+      setIfNumberOfPeopleIsValid(false);
     } else {
-      setifNumberOfPeopleIsValid(true);
+      setIfNumberOfPeopleIsValid(true);
     }
   };
 
   const chill = () => {
     setIfOrderIsValid(true);
     setIfPercentageIsValid(true);
-    setifNumberOfPeopleIsValid(true);
+    setIfNumberOfPeopleIsValid(true);
   };
 
   const calculatePress = () => {
@@ -133,6 +133,7 @@ export default function Main() {
                   precision={2}
                   style={{
                     textAlign: 'right',
+                    fontFamily: 'Mulish-Regular',
                   }}
                 />
               </Input>
@@ -151,6 +152,7 @@ export default function Main() {
                   precision={2}
                   style={{
                     textAlign: 'right',
+                    fontFamily: 'Mulish-Regular',
                   }}
                 />
               </Input>
@@ -234,7 +236,10 @@ export default function Main() {
                   separator=","
                   precision={0}
                   suffix=""
-                  style={{ textAlign: 'right' }}
+                  style={{
+                    textAlign: 'right',
+                    fontFamily: 'Mulish-Regular',
+                  }}
                 />
               </Input>
             </InputContainer>
@@ -252,7 +257,10 @@ export default function Main() {
                   separator=","
                   precision={0}
                   suffix=""
-                  style={{ textAlign: 'right' }}
+                  style={{
+                    textAlign: 'right',
+                    fontFamily: 'Mulish-Regular',
+                  }}
                 />
               </Input>
             </WarningInputContainer>
@@ -274,7 +282,10 @@ export default function Main() {
                 delimiter=""
                 separator=""
                 precision={0}
-                style={{ textAlign: 'right' }}
+                style={{
+                  textAlign: 'right',
+                  fontFamily: 'Mulish-Regular',
+                }}
               />
             </Input>
           </InputContainer>
@@ -290,7 +301,10 @@ export default function Main() {
                 delimiter=""
                 separator=""
                 precision={0}
-                style={{ textAlign: 'right' }}
+                style={{
+                  textAlign: 'right',
+                  fontFamily: 'Mulish-Regular',
+                }}
               />
             </Input>
           </WarningInputContainer>
