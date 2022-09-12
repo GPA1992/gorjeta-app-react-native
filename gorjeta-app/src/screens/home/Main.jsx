@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import CurrencyInput from 'react-native-currency-input';
+import { Keyboard } from 'react-native';
 import {
   Title, InputContainer, Input,
   Body, PercentageContainer, PercentButton, Form,
@@ -68,9 +69,21 @@ export default function Main() {
   };
 
   const warning = () => {
-    if (orderValue === '' || orderValue === null) setIfOrderIsValid(false);
-    if (tipPercent === '' || tipPercent === null) setIfPercentageIsValid(false);
-    if (peopleNumber === '' || peopleNumber === null) setifNumberOfPeopleIsValid(false);
+    if (orderValue === '' || orderValue === null) {
+      setIfOrderIsValid(false);
+    } else {
+      setIfOrderIsValid(true);
+    }
+    if (tipPercent === '' || tipPercent === null) {
+      setIfPercentageIsValid(false);
+    } else {
+      setIfPercentageIsValid(true);
+    }
+    if (peopleNumber === '' || peopleNumber === null) {
+      setifNumberOfPeopleIsValid(false);
+    } else {
+      setifNumberOfPeopleIsValid(true);
+    }
   };
 
   const chill = () => {
@@ -93,6 +106,7 @@ export default function Main() {
       default:
         tipSum();
     }
+    Keyboard.dismiss();
   };
 
   return (
