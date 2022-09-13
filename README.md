@@ -1,9 +1,9 @@
-# Boas vindas ao repositório do aplicativo de Gorjeta!
+#Boas vindas ao repositório do aplicativo de Gorjeta!
 
 Com esse aplicativo o usuário será capa de calcular o valor da gorjeta que vai ser dado ao atendente do estabelecimento baseado na porcentagem desejada em cima do valor total do pedido, além disso será possível calcular o quanto cada pessoa vai pagar de gorjeta.
 
 <details>
-  <summary><strong>🖥 Técnologia utilizada</strong></summary><br />
+  <summary><strong>🖥 Tecnologia utilizada</strong></summary><br />
 
   Para a elaboração desse projeto eu utilizei o EXPO.
 
