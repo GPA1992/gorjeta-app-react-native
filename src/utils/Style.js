@@ -97,7 +97,7 @@ export const Input = styled.View`
   width: 80%;
 `;
 
-export const Div = styled.View`
+export const ContainerView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;

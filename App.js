@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from '@expo-google-fonts/mulish';
 import Main from './src/screens/home/Main';
+import Provider from './src/contexts/ProviderTips';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,9 +14,11 @@ export default function App() {
     return null;
   }
   return (
+    <Provider>
     <View style={styles.container}>
       <Main />
     </View>
+    </Provider>
   );
 }
 
