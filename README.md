@@ -42,5 +42,5 @@ Com esse aplicativo o usuário será capa de calcular o valor da gorjeta que vai
   </details>
 
 <br />
-<button style="background-color: grey" class="btn"><a style="color: white" href="https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40gabrielproenca/gorjeta-app-1216d93a56bf4ac2a54ecf0cf3be2a36-signed.apk" download="gorjeta app download">Download</a></button>
+<button style="background-color: grey" class="btn"><a style="color: white" href="https://drive.google.com/file/d/1feonVvYWXqMJUI3NoBSTRThDaZRF1P7T/view?usp=sharing" download="gorjeta app download">Download</a></button>
 
