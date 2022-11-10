@@ -9,7 +9,7 @@ const FixPercentageContainer = () => {
     <View>
       <ContainerView>
         {percentageValues.map((p) => (
-          <PercentageButton percentage={p} />
+          <PercentageButton percentage={p} key={p} />
         ))}
       </ContainerView>
     </View>
