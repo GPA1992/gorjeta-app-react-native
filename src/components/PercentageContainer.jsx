@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
-import CurrencyInput from 'react-native-currency-input';
-import context from '../contexts/ContextTips';
-import { Input, Symbol, InputContainer } from '../utils/Style';
+import React, { useContext } from "react";
+import CurrencyInput from "react-native-currency-input";
+import context from "../contexts/ContextTips";
+import { Input, Symbol, InputContainer } from "../utils/Style";
 
 const InputPercentage = () => {
-  const { setCustomTipPercent, setTipPercent,
-    customTipPercent, setSelectedPercent } = useContext(context);
+  const {
+    setCustomTipPercent,
+    setTipPercent,
+    customTipPercent,
+    setSelectedPercent,
+    selectedPercent,
+  } = useContext(context);
 
   const setAllButtonFalse = () => {
     setSelectedPercent({
@@ -26,23 +31,23 @@ const InputPercentage = () => {
       <Symbol>%</Symbol>
       <Input>
         <CurrencyInput
-          maxValue={ 100 }
+          maxValue={100}
           placeholder="Personalize aqui"
-          value={ customTipPercent }
-          onChangeValue={ (value) => customPercentage(value) }
-          onChange={ setAllButtonFalse }
+          value={selectedPercent > 0 ? selectedPercent : customTipPercent}
+          onChangeValue={(value) => customPercentage(value)}
+          onChange={setAllButtonFalse}
           prefix=""
           separator=","
-          precision={ 0 }
+          precision={0}
           suffix=""
-          style={ {
-            textAlign: 'right',
-            fontFamily: 'Mulish-Regular',
-          } }
+          style={{
+            textAlign: "right",
+            fontFamily: "Mulish-Regular",
+          }}
         />
       </Input>
     </InputContainer>
   );
-}
+};
 
 export default InputPercentage;

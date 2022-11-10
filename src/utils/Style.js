@@ -1,8 +1,8 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 export const Body = styled.View`
-display: flex;
-  background-color: #F2F6FF;
+  display: flex;
+  background-color: #f2f6ff;
   flex-direction: column;
   align-items: center;
   height: 100%;
@@ -21,7 +21,7 @@ export const Form = styled.View`
   display: flex;
   align-items: center;
   border-radius: 24px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 487px;
   width: 327px;
   padding: 16px;
@@ -52,7 +52,7 @@ export const Label = styled.Text`
 export const Warning = styled.Text`
   font-family: Mulish-Bold;
   font-size: 14px;
-  color: #DF4A4A;
+  color: #df4a4a;
 `;
 
 export const InputContainer = styled.View`
@@ -65,7 +65,7 @@ export const InputContainer = styled.View`
   padding-top: 12px;
   padding-bottom: 12px;
   flex-direction: row;
-  background-color: #E6F6F9 ;
+  background-color: #e6f6f9;
   margin-bottom: 8px;
   width: 295px;
   height: 42px;
@@ -81,8 +81,8 @@ export const WarningInputContainer = styled.View`
   padding-top: 12px;
   padding-bottom: 12px;
   flex-direction: row;
-  background-color: #E6F6F9 ;
-  border: 1px solid #DF4A4A;
+  background-color: #e6f6f9;
+  border: 1px solid #df4a4a;
   margin-bottom: 8px;
   width: 295px;
   height: 42px;
@@ -101,7 +101,9 @@ export const ContainerView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  justify-content: space-between;
 `;
 
 export const PercentageContainer = styled.View`
@@ -112,47 +114,11 @@ export const PercentageContainer = styled.View`
   margin-bottom: 8px;
 `;
 
-export const SelectedPercentButton = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #0E7182;
-  background-color: #0E7182;
-  height: 42px;
-  width: 143px;
-  margin-right: 9px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-`;
-
-export const SelectedPercentText = styled.Text`
-  color: #FFFFFF;
-  font-family: Mulish-Regular;
-  font-size: 14px;
-`;
-
-export const PercentButton = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #01A7C2;
-  background-color: #FFFFFF;
-  height: 42px;
-  width: 143px;
-  margin-right: 9px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-`;
-
-export const PercentText = styled.Text`
-  color: #01A7C2;
-  font-family: Mulish-Regular;
-  font-size: 14px;
-`;
-
 export const CalculateButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
-  border: 1px solid #01A7C2;
-  background-color:#01A7C2;
+  border: 1px solid #01a7c2;
+  background-color: #01a7c2;
   height: 42px;
   width: 160px;
   border-radius: 10px;
@@ -160,7 +126,7 @@ export const CalculateButton = styled.TouchableOpacity`
 `;
 
 export const CalculateText = styled.Text`
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Mulish-Bold;
   font-size: 16px;
 `;
@@ -185,11 +151,11 @@ export const ValueContainer = styled.View`
   padding-left: 10px;
   padding-right: 10px;
   flex-direction: row;
-  background-color:  #01A7C2 ;
+  background-color: #01a7c2;
 `;
 
 export const ValueText = styled.Text`
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Mulish-Bold;
   font-size: 14px;
 `;
