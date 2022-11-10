@@ -7,12 +7,7 @@ const useContextHook = () => {
   const [peopleNumber, setPeopleNumber] = useState('');
   const [tipTotalValue, setTipTotalValue] = useState('');
   const [tipPerPeople, setTipPerPerson] = useState('');
-  const [selectedPercent, setSelectedPercent] = useState({
-    fivePercent: false,
-    tenPercent: false,
-    fifteenPercent: false,
-    twentyPercent: false,
-  });
+  const [selectedPercent, setSelectedPercent] = useState(0);
   const [ifOrderIsValid, setIfOrderIsValid] = useState(true);
   const [ifPercentageIsValid, setIfPercentageIsValid] = useState(true);
   const [ifNumberOfPeopleIsValid, setIfNumberOfPeopleIsValid] = useState(true);
